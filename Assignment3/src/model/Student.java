@@ -17,13 +17,12 @@ public class Student {
     private String firstName;
     private String lastName;
     private int age;
-    private Date enrollmentDate;
-    private Date graduationDate;
     private University university;
     private Company company;
     private Double startSalary;
     private Double currentSalary;
-    private Double averageSalary;
+    private Double midSalary;
+    private Double incrementRate;
     private List<Course> courseList;
     private List<Map<Course,Double>> gpa;
     private Double totalGpa;
@@ -52,21 +51,6 @@ public class Student {
         this.age = age;
     }
 
-    public Date getEnrollmentDate() {
-        return enrollmentDate;
-    }
-
-    public void setEnrollmentDate(Date enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
-    }
-
-    public Date getGraduationDate() {
-        return graduationDate;
-    }
-
-    public void setGraduationDate(Date graduationDate) {
-        this.graduationDate = graduationDate;
-    }
 
     public University getUniversity() {
         return university;
@@ -100,13 +84,6 @@ public class Student {
         this.currentSalary = currentSalary;
     }
 
-    public Double getAverageSalary() {
-        return averageSalary;
-    }
-
-    public void setAverageSalary(Double averageSalary) {
-        this.averageSalary = averageSalary;
-    }
 
     public List<Course> getCourseList() {
         return courseList;
@@ -131,6 +108,24 @@ public class Student {
     public void setTotalGpa(Double totalGpa) {
         this.totalGpa = totalGpa;
     }
+
+    public Double getMidSalary() {
+        return midSalary;
+    }
+
+    public void setMidSalary(Double midSalary) {
+        this.midSalary = midSalary;
+    }
+
+    public Double getIncrementRate() {
+        return incrementRate;
+    }
+
+    public void setIncrementRate(Double incrementRate) {
+        this.incrementRate = incrementRate;
+    }
+    
+    
     
     
     

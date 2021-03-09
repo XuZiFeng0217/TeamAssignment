@@ -14,6 +14,7 @@ public class Company {
     private String name;
     private String address;
     private double averageSalary;
+    
 
     public String getName() {
         return name;

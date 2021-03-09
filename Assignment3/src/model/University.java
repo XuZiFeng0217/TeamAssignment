@@ -15,6 +15,15 @@ public class University {
     private String name;
     private String address;
     private List<College> collegeList;
+    private List<Student> studentList;
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
 
     public String getName() {
         return name;

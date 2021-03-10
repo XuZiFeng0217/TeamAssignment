@@ -18,7 +18,7 @@ public class Utils {
    /**
     * 某学院全部学生按照totalGpa降序排序
     * @param college
-    * @return 
+    * @return students
     */
     public List<Student> rankByTotalGpaByCollege(College college){
         List<Student> students = college.getStudentList();

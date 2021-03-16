@@ -48,7 +48,7 @@ public class relationshipGpaSalary {
   
     private ArrayList listY;  
   
-    private Double XMin, XMax, YMin, YMax;  
+    private Double XMin=0.0, XMax=0.0, YMin=0.0, YMax=0.0;  
   
     /** line coefficient a0 */  
     private float a0;  
@@ -61,6 +61,92 @@ public class relationshipGpaSalary {
   
     /** true if coefficients valid */  
     private boolean coefsValid;
+
+    public double getSumX() {
+        return sumX;
+    }
+
+    public double getSumY() {
+        return sumY;
+    }
+
+    public double getSumXX() {
+        return sumXX;
+    }
+
+    public double getSumXY() {
+        return sumXY;
+    }
+
+    public double getSumYY() {
+        return sumYY;
+    }
+
+    public double getSumDeltaY() {
+        return sumDeltaY;
+    }
+
+    public double getSumDeltaY2() {
+        return sumDeltaY2;
+    }
+
+    public double getSse() {
+        return sse;
+    }
+
+    public double getSst() {
+        return sst;
+    }
+
+    public double getE() {
+        return E;
+    }
+
+    public String[] getXy() {
+        return xy;
+    }
+
+    public ArrayList getListX() {
+        return listX;
+    }
+
+    public ArrayList getListY() {
+        return listY;
+    }
+
+    public Double getXMin() {
+        return XMin;
+    }
+
+    public Double getXMax() {
+        return XMax;
+    }
+
+    public Double getYMin() {
+        return YMin;
+    }
+
+    public Double getYMax() {
+        return YMax;
+    }
+
+    public float getA0() {
+        return a0;
+    }
+
+    public float getA1() {
+        return a1;
+    }
+
+    public int getPn() {
+        return pn;
+    }
+
+    public boolean isCoefsValid() {
+        return coefsValid;
+    }
+    
+    
     
     public relationshipGpaSalary(List<Student> students) {  
         pn = 0;  
@@ -107,7 +193,7 @@ public class relationshipGpaSalary {
             }  
             ++pn;  
             coefsValid = false;  
-            }  
+            }
     }
     
         /** 
@@ -138,7 +224,7 @@ public class relationshipGpaSalary {
     /** 
      * Validate the coefficients. 计算方程系数 y=ax+b 中的a 
      */  
-    private void validateCoefficients() {  
+    public void validateCoefficients() {  
         if (coefsValid)  
             return;  
   
@@ -162,8 +248,8 @@ public class relationshipGpaSalary {
     public double getR() {  
         // 遍历这个list并计算分母  
         for (int i = 0; i < pn - 1; i++) {  
-            float Yi = (float) Integer.parseInt(listY.get(i).toString());  
-            float Y = at(Integer.parseInt(listX.get(i).toString()));  
+            float Yi = (float) Double.parseDouble(listY.get(i).toString());  
+            float Y = (float) Double.parseDouble(listX.get(i).toString()); 
             float deltaY = Yi - Y;  
             float deltaY2 = deltaY * deltaY;  
             /* 

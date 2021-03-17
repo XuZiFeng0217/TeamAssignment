@@ -16,6 +16,11 @@ public class University {
     private String address;
     private List<College> collegeList;
     private List<Student> studentList;
+    
+    public University(String name, String address){
+        this.name = name;
+        this.address = address;
+    }
 
     public List<Student> getStudentList() {
         return studentList;

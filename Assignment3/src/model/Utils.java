@@ -165,7 +165,6 @@ public class Utils {
         
         return result;
     }
-<<<<<<< HEAD
     
     
         /**
@@ -187,7 +186,5 @@ public class Utils {
 
     }
     
-=======
->>>>>>> 2e546b6820b56675753e03fc991b28bc5839e5b8
     
 }

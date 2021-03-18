@@ -15,6 +15,38 @@ import javax.naming.spi.DirStateFactory.Result;
  * @author xzf
  */
 public class Utils {
+        /**
+    * 全部学生按照totalGpa降序排序
+    * @param college
+    * @return students
+    */
+    public List<Student> rankByTotalGpa(List<Student> students){
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student stu1, Student stu2) {
+                
+                return stu2.getTotalGpa().compareTo(stu1.getTotalGpa());
+        }}
+        );
+        return students;
+    }
+    
+            /**
+     * List全部学生按照CurrentSalary降序排序
+     * @param college
+     * @return 
+     */
+    public List<Student> rankByCurrentSalary(List<Student> students){
+        
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student stu1, Student stu2) {
+                //升序
+                return stu2.getCurrentSalary().compareTo(stu1.getCurrentSalary());
+        }}
+        );
+        return students;
+    }
     
    /**
     * 某学院全部学生按照totalGpa降序排序
@@ -109,6 +141,19 @@ public class Utils {
         }
         return sum/students.size();
         
+    }
+    public ArrayList<Course> RankCurrentSalaryByCourse(ArrayList<Course> courses){
+        Utils utils = new Utils();
+        Collections.sort(courses,new Comparator<Course>(){
+            @Override
+            public int compare(Course course1, Course course2) {
+                //升序
+                return utils.getAverageCurrentSalaryByCourse(course2).compareTo(utils.getAverageCurrentSalaryByCourse(course1));
+        }}
+        );
+        return courses;
+        
+
     }
     
     /**

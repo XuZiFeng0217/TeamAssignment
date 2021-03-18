@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,17 @@ public class Teacher {
     private String firstName;
     private String lastName;
     private int age;
-    private List<Course> courseList;
+    private ArrayList<Course> courseList = new ArrayList<Course>();
+    
+    public Teacher(String firstName, String lastName, int age, Course course1, Course course2){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.courseList.add(course1);
+        this.courseList.add(course2);
+    }
+    
+    
 
     public String getFirstName() {
         return firstName;
@@ -45,7 +56,7 @@ public class Teacher {
         return courseList;
     }
 
-    public void setCourseList(List<Course> courseList) {
+    public void setCourseList(ArrayList<Course> courseList) {
         this.courseList = courseList;
     }
     

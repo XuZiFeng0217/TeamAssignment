@@ -13,10 +13,22 @@ import java.util.List;
  */
 public class Course {
     private String name;
+    private String college;
     private List<Teacher> teacherList;
     private List<Student> studentList;
     private List<String> relatedField;
+    //考虑是否加学分，给学生算totalGPA用
 
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+    
+    
+    
     public String getName() {
         return name;
     }
@@ -52,6 +64,13 @@ public class Course {
     public void setRelatedField(List<String> relatedField) {
         this.relatedField = relatedField;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+    
+    
     
     
 }

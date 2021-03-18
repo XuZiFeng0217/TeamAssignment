@@ -21,11 +21,20 @@ public class Student {
     private Company company;
     private Double startSalary;
     private Double currentSalary;
-    private Double midSalary;
-    private Double incrementRate;
     private List<Course> courseList;
     private List<Map<Course,Double>> gpa;
     private Double totalGpa;
+    private String college; 
+    
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+    
+    
 
     public String getFirstName() {
         return firstName;
@@ -108,26 +117,4 @@ public class Student {
     public void setTotalGpa(Double totalGpa) {
         this.totalGpa = totalGpa;
     }
-
-    public Double getMidSalary() {
-        return midSalary;
-    }
-
-    public void setMidSalary(Double midSalary) {
-        this.midSalary = midSalary;
-    }
-
-    public Double getIncrementRate() {
-        return incrementRate;
-    }
-
-    public void setIncrementRate(Double incrementRate) {
-        this.incrementRate = incrementRate;
-    }
-    
-    
-    
-    
-    
-    
 }

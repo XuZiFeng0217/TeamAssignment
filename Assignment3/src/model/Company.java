@@ -39,6 +39,13 @@ public class Company {
     public void setAverageSalary(double averageSalary) {
         this.averageSalary = averageSalary;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+    
+    
     
     
     

@@ -5,6 +5,13 @@
  */
 package ui;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Company;
+import model.Course;
+import model.Student;
+import model.Utils;
+
 /**
  *
  * @author zzz
@@ -14,8 +21,68 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    List<Student> students;
+    List<Course> courses; 
     public MainJFrame() {
         initComponents();
+        Student stu1 = new Student();
+        Student stu2 = new Student();
+        stu1.setFirstName("Jack");
+        stu1.setLastName("Smith");
+        stu1.setCollege("Compuer And Science");
+        stu1.setTotalGpa(3.17);
+        stu1.setCurrentSalary(1500.0);
+        stu1.setStartSalary(800.0);
+        Company c1 = new Company();
+        Company c2 = new Company();
+        c1.setName("Apple");
+        c2.setName("HuaWei");
+        stu1.setCompany(c1);
+        Course course1 = new Course();
+        Course course2 = new Course();
+        course1.setName("Math");
+        course2.setName("Chinese");
+        List<Course> courses1 = new ArrayList<Course>();
+        courses1.add(course1);
+        courses1.add(course2);
+        stu1.setCourseList(courses1);
+        
+        stu2.setFirstName("Lily");
+        stu2.setLastName("Mary");
+        stu2.setCollege("Literature");
+        stu2.setTotalGpa(3.95);
+        stu2.setCurrentSalary(595.0);
+        stu2.setStartSalary(430.0);
+        stu2.setCompany(c2);
+        stu2.setCourseList(courses1);
+        students = new ArrayList<Student>();
+        students.add(stu1);
+        students.add(stu2);
+        
+        Utils utils  = new Utils();
+        stu1.setCollege("Compuer And Science");
+        stu2.setCollege("Literature");
+        String str1  = "Counting,Computing";
+        String str2  = "Reading,Writing";
+        List<String> relatedField = new ArrayList<String>();
+        relatedField.add(str1);
+        relatedField.add(str2);
+        course1.setRelatedField(relatedField);
+        course2.setRelatedField(relatedField);
+        course1.setCollege("Compuer And Science");
+        course2.setCollege("Literature");
+        List<Student> students1 = new ArrayList<Student>();
+        List<Student> students2 = new ArrayList<Student>();
+        students1.add(stu1);
+        students2.add(stu2);
+        course1.setStudentList(students1);
+        course2.setStudentList(students2);
+        
+        courses = new ArrayList<Course>();
+        courses.add(course2);
+        courses.add(course1);
+        
+        
     }
 
     /**
@@ -40,8 +107,18 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setDividerLocation(200);
 
         jButton1.setText("ViewStudents");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("ViewCourses");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,7 +138,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(554, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -70,11 +147,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 781, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
+            .addGap(0, 830, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -83,15 +160,29 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 832, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ViewStudentInfo  viewStudentInfo  = new ViewStudentInfo(students);
+        jSplitPane1.setRightComponent(viewStudentInfo);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ViewCourseInfo  viewCourseInfo  = new ViewCourseInfo(courses);
+        jSplitPane1.setRightComponent(viewCourseInfo);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

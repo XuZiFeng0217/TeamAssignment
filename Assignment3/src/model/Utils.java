@@ -8,6 +8,7 @@ package model;
 import java.util.Collections;
 import java.util.List;
 import java.util.*;
+import javax.naming.spi.DirStateFactory.Result;
 
 /**
  *
@@ -18,19 +19,39 @@ public class Utils {
    /**
     * 某学院全部学生按照totalGpa降序排序
     * @param college
-    * @return 
+    * @return students
     */
     public List<Student> rankByTotalGpaByCollege(College college){
         List<Student> students = college.getStudentList();
         Collections.sort(students,new Comparator<Student>(){
             @Override
             public int compare(Student stu1, Student stu2) {
-                //升序
+                
                 return stu2.getTotalGpa().compareTo(stu1.getTotalGpa());
         }}
         );
         return students;
     }
+    
+    /**
+    * 全部学生按照totalGpa降序排序
+    * @param college
+    * @return students
+    */
+    public List<Student> rankByTotalGpa(List<Student> students){
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student stu1, Student stu2) {
+                
+                return stu2.getTotalGpa().compareTo(stu1.getTotalGpa());
+        }}
+        );
+        return students;
+    }
+    
+    
+    
+    
     
     /**
      * 某学院全部学生按照CurrentSalary降序排序
@@ -39,6 +60,23 @@ public class Utils {
      */
     public List<Student> rankByCurrentSalaryByCollege(College college){
         List<Student> students = college.getStudentList();
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student stu1, Student stu2) {
+                //升序
+                return stu2.getCurrentSalary().compareTo(stu1.getCurrentSalary());
+        }}
+        );
+        return students;
+    }
+    
+        /**
+     * List全部学生按照CurrentSalary降序排序
+     * @param college
+     * @return 
+     */
+    public List<Student> rankByCurrentSalary(List<Student> students){
+        
         Collections.sort(students,new Comparator<Student>(){
             @Override
             public int compare(Student stu1, Student stu2) {
@@ -62,6 +100,90 @@ public class Utils {
         }
         return sum/students.size();
         
+    }
+    
+        /**
+     * 获取单独学生的每年平均涨薪
+     * @param Student
+     * @return double
+     */
+    //删除了Student类里的incrementRate与midSalary变量，比较整齐，输入模拟数据建Student时也只输入基础信息。
+    public Double getAverageSalaryIncreament(Student student){
+        Double startSalary = student.getStartSalary();
+        Double currentSalary = student.getCurrentSalary();
+        Double averageSalaryIncreament = (currentSalary - startSalary)/5;
+        
+        return averageSalaryIncreament;
+    }
+    
+        /**
+     * 某学院全部学生按照startSalary降序排序
+     * @param college
+     * @return List<Student>
+     */
+    public List<Student> rankByStartSalaryByCollege(College college){
+        List<Student> students = college.getStudentList();
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student stu1, Student stu2) {
+                //升序
+                return stu2.getStartSalary().compareTo(stu1.getStartSalary());
+        }}
+        );
+        return students;
+    }
+    
+    /**
+     * 获取学习过某门课程所有学生的平均startSalary
+     * @param course
+     * @return Double
+     */
+    public Double getAverageStartSalaryByCourse(Course course){
+        List<Student> students = course.getStudentList();
+        double sum=0;
+        for(Student stu : students){
+            sum = sum + stu.getStartSalary();
+        }
+        return sum/students.size();
+        
+    }
+    
+    /**
+     * 获取List<Student>里所有学生GPA与startSalary的关系
+     * @param List<Student>
+     * @return Double[]
+     */
+    public Double[] getRelationshipBetweenGpaAndStartsalary(List<Student> students){
+        relationshipGpaSalary model = new relationshipGpaSalary(students);
+        model.validateCoefficients();
+        Double[] result = new Double[3];
+        
+        //返回3个Double数，第一个为回归方程系数，第二个为常数，第三个为统计里的R方（拟合优度）越接近1相关性越大
+        result[0] =Double.valueOf(String.valueOf(model.getA1()));
+        result[1] = Double.valueOf(String.valueOf(model.getA0()));
+        result[2] = model.getR();
+        
+        return result;
+    }
+    
+    
+        /**
+     * 课程根据currentSalary排名
+     * @param List<Course>
+     * @return List<Course>
+     */
+    public List<Course> RankCurrentSalaryByCourse(List<Course> courses){
+        Utils utils = new Utils();
+        Collections.sort(courses,new Comparator<Course>(){
+            @Override
+            public int compare(Course course1, Course course2) {
+                //升序
+                return utils.getAverageCurrentSalaryByCourse(course2).compareTo(utils.getAverageCurrentSalaryByCourse(course1));
+        }}
+        );
+        return courses;
+        
+
     }
     
     

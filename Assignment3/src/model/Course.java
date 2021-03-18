@@ -19,7 +19,6 @@ public class Course {
     private List<String> relatedField;
     //考虑是否加学分，给学生算totalGPA用
 
-
     public String getCollege() {
         return college;
     }
@@ -28,7 +27,7 @@ public class Course {
         this.college = college;
     }
     
-
+    
     
     public String getName() {
         return name;

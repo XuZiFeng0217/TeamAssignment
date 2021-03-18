@@ -94,14 +94,14 @@ public class ViewStudentInfo extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("GroupBySalary");
+        jButton2.setText("RankBySalary");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("GroupByGpa");
+        jButton3.setText("RankByGpa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

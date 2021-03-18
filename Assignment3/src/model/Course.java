@@ -18,6 +18,7 @@ public class Course {
     private List<Student> studentList;
     private List<String> relatedField;
     //考虑是否加学分，给学生算totalGPA用
+<<<<<<< HEAD
 
     public String getCollege() {
         return college;
@@ -28,6 +29,8 @@ public class Course {
     }
     
     
+=======
+>>>>>>> 2e546b6820b56675753e03fc991b28bc5839e5b8
     
     public String getName() {
         return name;

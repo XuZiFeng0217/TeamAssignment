@@ -20,10 +20,12 @@ public class College {
     
     public College(){}
 
-    public College(String name,String courseName1, String courseName2, String courseName3, Double credit1, Double credit2, Double credit3){
-        Course course1 = new Course(courseName1, credit1);
-        Course course2 = new Course(courseName2, credit2);
-        Course course3 = new Course(courseName3, credit3);
+    public College(String name,String courseName1, String courseName2, String courseName3, Double credit1, Double credit2, Double credit3,
+            String field1, String field2,String field3,String field4,String field5,String field6,String field7,String field8,String field9){
+        
+        Course course1 = new Course(courseName1, credit1, name, field1, field2 ,field3);
+        Course course2 = new Course(courseName2, credit2, name, field4, field5, field6);
+        Course course3 = new Course(courseName3, credit3, name, field7, field8, field9);
 
         this.courseList.add(course1);
         this.courseList.add(course2);

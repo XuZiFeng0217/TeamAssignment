@@ -43,11 +43,11 @@ public class TotalSystem {
     
     private void addCollegeAndCourse(){
 
-        College college1 = new College("Engineer College","Database","Computer Network","Cloud Computing",4.0, 3.0, 2.0);
-        College college2 = new College("Computer College","C Programme","Robotic","Operating System",4.0, 3.0, 2.0);
-        College college3 = new College("Medical College", "Biology","Medician","Otology",4.0, 3.0, 2.0);
-        College college4 = new College("Science College","Optic","Mechanics","Partical Physics",4.0, 3.0, 2.0);
-        College college5 = new College("Finance College","Money&Banking","International Finance", "Insurance",4.0, 3.0, 2.0);
+        College college1 = new College("Engineer College","Database","Computer Network","Cloud Computing",4.0, 3.0, 2.0,"Information","Computer","Network","AI","Data Management","Application Design","Server Computing","System Analysis","Operation Research");
+        College college2 = new College("Computer College","C Programme","Robotic","Operating System",4.0, 3.0, 2.0,"Math","Operation System","Mechine Learning","Computer Vision","Algorithm","Database Design","Logistic","NLP","UI design");
+        College college3 = new College("Medical College", "Biology","Medician","Otology",4.0, 3.0, 2.0,"Medical research","Trement Room","Pharmacy","ICU","Operation Room","Emergency","Consulting","Infection","Nurse");
+        College college4 = new College("Science College","Optic","Mechanics","Partical Physics",4.0, 3.0, 2.0,"Physic","Engineer","Building","Experiment","Atom","QED","Universe","Geography","Geothearme");
+        College college5 = new College("Finance College","Money&Banking","International Finance", "Insurance",4.0, 3.0, 2.0,"Accounting","Budget","Capitalism","Competition","Comsumer Theory","Deduction","Banker","Enterpreneur","Cost Computing");
 
         this.university.getCollegeList().add(college1);
         this.university.getCollegeList().add(college2);
@@ -68,6 +68,8 @@ public class TotalSystem {
                 Course course2 = courseList.get(1);
                 
                 Teacher teacher = new Teacher(firstName,lastName,age,course1,course2);
+                course1.getTeacherList().add(teacher);
+                course2.getTeacherList().add(teacher);
                 college.getTeacherList().add(teacher);
                 
         }
@@ -91,13 +93,16 @@ public class TotalSystem {
                 Double gpa1 = faker.number().randomDouble(2, 2, 4);
                 Course course2 = courseList.get(1);
                 Double gpa2 = faker.number().randomDouble(2, 2, 4);
-                Course course3 = courseList.get(2);
-                Double gpa3 = faker.number().randomDouble(2, 2, 4);
+                //Course course3 = courseList.get(2);
+                //Double gpa3 = faker.number().randomDouble(2, 2, 4);
                 
                 Student currentStudent = new Student(firstName,lastName,belongCollege,age,company,startSalary,currentSalary,
-                        course1,course2,course3,gpa1,gpa2,gpa3);
+                        course1,course2,gpa1,gpa2);
                 
                 college.getStudentList().add(currentStudent);
+                course1.getStudentList().add(currentStudent);
+                course2.getStudentList().add(currentStudent);
+                //course3.getStudentList().add(currentStudent);
                 this.university.getStudentList().add(currentStudent);
             }
         }

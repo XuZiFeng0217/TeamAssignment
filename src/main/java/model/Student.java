@@ -29,8 +29,8 @@ public class Student {
     private String college; 
     
     public Student(String college, String firstName, String lastName, int age, Company company, 
-            Double startSalary, Double currentSalary,Course course1, Course course2, Course course3, 
-            Double gpa1, Double gpa2, Double gpa3){
+            Double startSalary, Double currentSalary,Course course1, Course course2, 
+            Double gpa1, Double gpa2){
         
                 this.college = college;
                 this.firstName = firstName;
@@ -41,11 +41,11 @@ public class Student {
                 this.currentSalary = currentSalary;
                 this.courseList.add(course1);
                 this.courseList.add(course2);
-                this.courseList.add(course3);
+                //this.courseList.add(course3);
                 
                 this.gpa.put(course1, gpa1);
                 this.gpa.put(course2, gpa2);
-                this.gpa.put(course3, gpa3);
+                //this.gpa.put(course3, gpa3);
                 
         
     }
@@ -135,7 +135,7 @@ public class Student {
             totalGpa += (entry.getValue() * entry.getKey().getCredit());
         }
         this.totalGpa = totalGpa/totalCredit;
-        return totalGpa;
+        return this.totalGpa;
     }
 
     public void setTotalGpa(Double totalGpa) {

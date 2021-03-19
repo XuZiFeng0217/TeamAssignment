@@ -233,14 +233,15 @@ public class ViewCourseInfo extends javax.swing.JPanel {
         DefaultTableModel model  = (DefaultTableModel)TableCourses.getModel();
         Course course = courses.get(selectedIndex);
         Utils utils = new Utils();
-        //RelatedField.setText(course.getRelatedField().toString());
+        RelatedField.setText(course.getRelatedField().toString());
         Name.setText(course.getName());
-        //College.setText(course.getCollege());
+        College.setText(course.getCollege());
         Current.setText(String.valueOf(utils.getAverageCurrentSalaryByCourse(course)));
         Start.setText(String.valueOf(utils.getAverageStartSalaryByCourse(course)));
         double start = utils.getAverageCurrentSalaryByCourse(course);
         double current = utils.getAverageCurrentSalaryByCourse(course);
-        increnmrntRate.setText(String.valueOf((current-start)/start*100));
+        increnmrntRate.setText(String.valueOf(utils.getAverageIncrementRateByCourse(course)));
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -254,8 +255,8 @@ public class ViewCourseInfo extends javax.swing.JPanel {
         for(Course course : courses){
             Object[] row  = new Object[4];
             row[0] = course.getName();
-            //row[1] = course.getCollege();
-            //row[2] = course.getRelatedField().toString();
+            row[1] = course.getCollege();
+            row[2] = course.getRelatedField().toString();
             row[3] = utils.getAverageCurrentSalaryByCourse(course);
             model.addRow(row);
         }

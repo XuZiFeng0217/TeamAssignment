@@ -88,13 +88,27 @@ public class Utils {
      * @return 
      */
     public Double getAverageCurrentSalaryByCourse(Course course){
-        List<Student> students = course.getStudentList();
+        ArrayList<Student> students = course.getStudentList();
         double sum=0;
         for(Student stu : students){
             sum = sum + stu.getCurrentSalary();
         }
         return sum/students.size();
         
+    }
+    
+    /**
+     * 获取学习过某门课程所有学生的平均IncrementRate
+     * @param course
+     * @return 
+     */
+    public Double getAverageIncrementRateByCourse(Course course){
+        ArrayList<Student> students = course.getStudentList();
+        double sum=0;
+        for(Student stu : students){
+            sum = sum + (stu.getCurrentSalary()- stu.getStartSalary())/(5*stu.getStartSalary());
+        }
+        return sum/students.size()*100;
     }
     
         /**

@@ -253,8 +253,8 @@ public class ViewStudentInfo extends javax.swing.JPanel {
         DefaultTableModel model  = (DefaultTableModel)TableStudents.getModel();
         Student stu = students.get(selectedIndex);
         firstName.setText(stu.getFirstName());
-        lastName.setText(stu.getLastName());
-        College.setText(stu.getCollege());
+        College.setText(stu.getLastName());
+        lastName.setText(stu.getCollege());
         company.setText(stu.getCompany().toString());
         totalGpa.setText(String.format("%.2f",stu.getTotalGpa()));
         startSalary.setText(String.format("%.2f",stu.getStartSalary()));

@@ -7,6 +7,7 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.College;
 import model.Company;
 import model.Course;
 import model.Student;
@@ -195,7 +196,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ViewCourseInfo  viewCourseInfo  = new ViewCourseInfo(totalSystem.getUniversity().getCollegeList().get(1).getCourseList());
+        ViewCourseInfo  viewCourseInfo  = new ViewCourseInfo(totalSystem.getUniversity().getCollegeList().get(1).getCourseList(),totalSystem.getUniversity().getCollegeList());
         jSplitPane1.setRightComponent(viewCourseInfo);
     }//GEN-LAST:event_jButton2ActionPerformed
 

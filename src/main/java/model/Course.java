@@ -17,12 +17,33 @@ public class Course {
     private ArrayList<Teacher> teacherList = new ArrayList<>();
     private ArrayList<Student> studentList = new ArrayList<>();
     private Double credit;
-    //private List<String> relatedField;
-    //考虑是否加学分，给学生算totalGPA用
+    private ArrayList<String> relatedField = new ArrayList<>();
+    private String college;
+
+    public List<String> getRelatedField() {
+        return relatedField;
+    }
+
+    public void setRelatedField(ArrayList<String> relatedField) {
+        this.relatedField = relatedField;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
     
-    public Course(String name,Double credit){
+    
+    public Course(String name,Double credit, String college, String field1, String field2, String field3){
         this.name = name;
         this.credit = credit;
+        this.college = college;
+        this.relatedField.add(field1);
+        this.relatedField.add(field2);
+        this.relatedField.add(field3);
     }
             
     public String getName() {

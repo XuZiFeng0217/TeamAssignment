@@ -41,10 +41,10 @@ public class Test {
             }
             System.out.println("------------------------------------------------------");
          
-        Utils utils = new Utils();
-        Double[] result = utils.getRelationshipBetweenGpaAndStartsalary(total.getUniversity().getStudentList());
-        System.out.println("\n回归线公式:  y = " + result[0] + "x + " + result[1]);  
-        System.out.println("误差： R^2 = " + result[2]);  
+//        Utils utils = new Utils();
+//        Double[] result = utils.getRelationshipBetweenGpaAndStartsalary(total.getUniversity().getStudentList());
+//        System.out.println("\n回归线公式:  y = " + result[0] + "x + " + result[1]);  
+//        System.out.println("误差： R^2 = " + result[2]);  
             
         }
         }

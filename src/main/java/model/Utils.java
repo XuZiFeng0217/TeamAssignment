@@ -88,13 +88,27 @@ public class Utils {
      * @return 
      */
     public Double getAverageCurrentSalaryByCourse(Course course){
-        List<Student> students = course.getStudentList();
+        ArrayList<Student> students = course.getStudentList();
         double sum=0;
         for(Student stu : students){
             sum = sum + stu.getCurrentSalary();
         }
         return sum/students.size();
         
+    }
+    
+    /**
+     * 获取学习过某门课程所有学生的平均IncrementRate
+     * @param course
+     * @return 
+     */
+    public Double getAverageIncrementRateByCourse(Course course){
+        ArrayList<Student> students = course.getStudentList();
+        double sum=0;
+        for(Student stu : students){
+            sum = sum + (stu.getCurrentSalary()- stu.getStartSalary())/(5*stu.getStartSalary());
+        }
+        return sum/students.size()*100;
     }
     
         /**
@@ -161,7 +175,7 @@ public class Utils {
      * @param List<Student>
      * @return Double[]
      */
-    public Double[] getRelationshipBetweenGpaAndStartsalary(List<Student> students){
+    public String getRelationshipBetweenGpaAndStartsalary(List<Student> students){
         relationshipGpaSalary model = new relationshipGpaSalary(students);
         model.validateCoefficients();
         Double[] result = new Double[3];
@@ -171,7 +185,27 @@ public class Utils {
         result[1] = Double.valueOf(String.valueOf(model.getA0()));
         result[2] = model.getR();
         
-        return result;
+        
+        return  "y = " + result[0] + "x + " + result[1];
+    }
+    
+        /**
+     * 获取List<Student>里所有学生GPA与startSalary的关系
+     * @param List<Student>
+     * @return Double[]
+     */
+    public String getRelationshipBetweenGpaAndStartsalary1(List<Student> students){
+        relationshipGpaSalary model = new relationshipGpaSalary(students);
+        model.validateCoefficients();
+        Double[] result = new Double[3];
+        
+        //返回3个Double数，第一个为回归方程系数，第二个为常数，第三个为统计里的R方（拟合优度）越接近1相关性越大
+        result[0] =Double.valueOf(String.valueOf(model.getA1()));
+        result[1] = Double.valueOf(String.valueOf(model.getA0()));
+        result[2] = model.getR();
+        
+        
+        return  result[2]+"";
     }
     
 }

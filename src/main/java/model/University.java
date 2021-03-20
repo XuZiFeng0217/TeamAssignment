@@ -17,6 +17,7 @@ public class University {
     private String address;
     private ArrayList<College> collegeList = new ArrayList<>();
     private ArrayList<Student> studentList = new ArrayList<>();
+    private ArrayList<Course> courseList = new ArrayList<>();
     
     public University(String name, String address){
         this.name = name;
@@ -53,6 +54,25 @@ public class University {
 
     public void setCollegeList(ArrayList<College> collegeList) {
         this.collegeList = collegeList;
+    }
+
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(ArrayList<Course> courseList) {
+        this.courseList = courseList;
+    }
+    
+    
+    
+    
+    public void updateCollegeList(){
+        for (College college : this.collegeList){
+            for (Course course: college.getCourseList()){
+                courseList.add(course);
+            }
+        }
     }
     
     

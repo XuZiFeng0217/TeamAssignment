@@ -113,6 +113,7 @@ public class TotalSystem {
         this.addCollegeAndCourse();
         this.addTeacher();
         this.addStudent();
+        this.university.updateCollegeList();
         }
     
     

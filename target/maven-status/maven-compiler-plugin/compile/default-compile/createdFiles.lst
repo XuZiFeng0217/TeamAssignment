@@ -24,8 +24,10 @@ ui\ViewStudentInfo$1.class
 ui\ViewCourseInfo$1.class
 ui\ViewStudentInfo.class
 model\Utils$4.class
+ui\ViewCourseInfo$5.class
 model\Utils$2.class
 model\Teacher.class
+ui\ViewCourseInfo$6.class
 ui\ViewCourseInfo.class
 ui\MainJFrame$3.class
 ui\ViewCourseInfo$3.class

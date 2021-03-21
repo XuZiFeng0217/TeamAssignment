@@ -208,4 +208,16 @@ public class Utils {
         return  result[2]+"";
     }
     
+    public List<Student> rankByRate(List<Student> students){
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student stu1, Student stu2) {
+
+                return getAverageSalaryIncreament(stu2).compareTo(getAverageSalaryIncreament(stu1));
+                
+        }}
+        );
+        return students;
+    }
+    
 }

@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,11 +27,14 @@ public class ViewCourseInfo extends javax.swing.JPanel {
     Utils utils = new Utils();
     ArrayList<Course> courses;
     ArrayList<College> colleges;
+    ArrayList<Course> tableCourses;
     public ViewCourseInfo(ArrayList<Course> courses,ArrayList<College> colleges) {
         
         initComponents();
+        TableCourses.setBackground(Color.yellow);
         this.courses = courses;
         this.colleges = colleges;
+        this.tableCourses = courses;
         populateTable(courses);
         popupatCombo(colleges);
     }
@@ -189,25 +193,25 @@ public class ViewCourseInfo extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(College, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(Increment))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(Equa, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Current, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel9))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Equa, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(College, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(Increment))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(Start, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(increnmrntRate, javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +282,7 @@ public class ViewCourseInfo extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Utils utils = new Utils();
-        ArrayList<Course> coursesRanked = utils.RankCurrentSalaryByCourse(courses);
+        ArrayList<Course> coursesRanked = utils.RankCurrentSalaryByCourse(tableCourses);
         populateTable(coursesRanked);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -316,19 +320,22 @@ public class ViewCourseInfo extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        List<Course> ViewCourseByCollege = new ArrayList<Course>();
+        ArrayList<Course> ViewCourseByCollege = new ArrayList<Course>();
         
         for(Course course : courses){
             if(course.getCollege().equals(jComboBox1.getSelectedItem())){
                 ViewCourseByCollege.add(course);
             }
         }
+       
         populateTable(ViewCourseByCollege);
+        tableCourses = ViewCourseByCollege;
     }//GEN-LAST:event_jButton3ActionPerformed
    
     private void populateTable(List<Course> courses){
         Utils utils = new Utils();
         DefaultTableModel model  = (DefaultTableModel)TableCourses.getModel();
+        
         model.setRowCount(0);
         for(Course course : courses){
             Object[] row  = new Object[4];

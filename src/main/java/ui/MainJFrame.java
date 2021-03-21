@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import model.College;
@@ -29,64 +30,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private TotalSystem totalSystem = new TotalSystem();
     public MainJFrame() {
         initComponents();
-        /*
-        Student stu1 = new Student();
-        Student stu2 = new Student();
-        stu1.setFirstName("Jack");
-        stu1.setLastName("Smith");
-        stu1.setCollege("Compuer And Science");
-        stu1.setTotalGpa(3.17);
-        stu1.setCurrentSalary(1500.0);
-        stu1.setStartSalary(800.0);
-        Company c1 = new Company();
-        Company c2 = new Company();
-        c1.setName("Apple");
-        c2.setName("HuaWei");
-        stu1.setCompany(c1);
-        Course course1 = new Course();
-        Course course2 = new Course();
-        course1.setName("Math");
-        course2.setName("Chinese");
-        List<Course> courses1 = new ArrayList<Course>();
-        courses1.add(course1);
-        courses1.add(course2);
-        stu1.setCourseList(courses1);
-        
-        stu2.setFirstName("Lily");
-        stu2.setLastName("Mary");
-        stu2.setCollege("Literature");
-        stu2.setTotalGpa(3.95);
-        stu2.setCurrentSalary(595.0);
-        stu2.setStartSalary(430.0);
-        stu2.setCompany(c2);
-        stu2.setCourseList(courses1);
-        students = new ArrayList<Student>();
-        students.add(stu1);
-        students.add(stu2);
-        
-        Utils utils  = new Utils();
-        stu1.setCollege("Compuer And Science");
-        stu2.setCollege("Literature");
-        String str1  = "Counting,Computing";
-        String str2  = "Reading,Writing";
-        List<String> relatedField = new ArrayList<String>();
-        relatedField.add(str1);
-        relatedField.add(str2);
-        course1.setRelatedField(relatedField);
-        course2.setRelatedField(relatedField);
-        course1.setCollege("Compuer And Science");
-        course2.setCollege("Literature");
-        List<Student> students1 = new ArrayList<Student>();
-        List<Student> students2 = new ArrayList<Student>();
-        students1.add(stu1);
-        students2.add(stu2);
-        course1.setStudentList(students1);
-        course2.setStudentList(students2);
-        
-        courses = new ArrayList<Course>();
-        courses.add(course2);
-        courses.add(course1);
-        */
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jButton3.setForeground(Color.red);
+        jButton2.setForeground(Color.blue);
+        jButton1.setForeground(Color.blue);
         
     }
 
@@ -192,12 +140,14 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewStudentInfo  viewStudentInfo  = new ViewStudentInfo(totalSystem.getUniversity().getStudentList());
         jSplitPane1.setRightComponent(viewStudentInfo);
+        viewStudentInfo.setBackground(new java.awt.Color(204, 255, 204));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ViewCourseInfo  viewCourseInfo  = new ViewCourseInfo(totalSystem.getUniversity().getCollegeList().get(1).getCourseList(),totalSystem.getUniversity().getCollegeList());
+        ViewCourseInfo  viewCourseInfo  = new ViewCourseInfo(totalSystem.getUniversity().getCourseList(),totalSystem.getUniversity().getCollegeList());
         jSplitPane1.setRightComponent(viewCourseInfo);
+        viewCourseInfo.setBackground(new java.awt.Color(204, 255, 204));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

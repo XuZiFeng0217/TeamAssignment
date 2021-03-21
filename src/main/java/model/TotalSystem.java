@@ -96,7 +96,7 @@ public class TotalSystem {
                 //Course course3 = courseList.get(2);
                 //Double gpa3 = faker.number().randomDouble(2, 2, 4);
                 
-                Student currentStudent = new Student(firstName,lastName,belongCollege,age,company,startSalary,currentSalary,
+                Student currentStudent = new Student(belongCollege,firstName,lastName,age,company,startSalary,currentSalary,
                         course1,course2,gpa1,gpa2);
                 
                 college.getStudentList().add(currentStudent);
